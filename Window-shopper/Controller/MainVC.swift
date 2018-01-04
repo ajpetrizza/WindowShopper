@@ -10,14 +10,24 @@ import UIKit
 
 class MainVC: UIViewController {
 
+    @IBOutlet weak var wageTxt: CurrencyTxtField!
+    @IBOutlet weak var priceTxt: CurrencyTxtField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let calcButton = UIButton(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 60))
+        calcButton.backgroundColor = #colorLiteral(red: 1, green: 0.4611823402, blue: 0.01496701924, alpha: 1)
+        calcButton.setTitle("Calculate", for: .normal)
+        calcButton.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        calcButton.addTarget(self, action: #selector(MainVC.calculate), for: .touchUpInside)
+        
+        wageTxt.inputAccessoryView = calcButton
+        priceTxt.inputAccessoryView = calcButton
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @objc func calculate() {
+        print("we got here")
     }
 
 
